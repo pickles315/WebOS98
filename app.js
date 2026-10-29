@@ -64,7 +64,7 @@ function showBrowserSearch(win){
  const form=$("#inline-search-form",win),input=$("#inline-search-query",win),results=$("#inline-search-results",win);
  form.addEventListener("submit",async e=>{e.preventDefault();const q=input.value.trim();if(!q)return;results.innerHTML="<p>Searching…</p>";address.value="webos98://search?q="+encodeURIComponent(q);
   try{const response=await fetch("https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+encodeURIComponent(q)+"&format=json&origin=*&srlimit=8");if(!response.ok)throw new Error("Search request failed");const data=await response.json(),items=data.query?.search||[];if(!items.length){results.innerHTML="<p>No results found. Try another search.</p>";return}
-   results.innerHTML="<h3>Results for “"+esc(q)+"”</h3>"+items.map(item=>`<article class="search-result"><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(item.title.replace(/ /g,"_"))}" target="_blank" rel="noopener"><strong>${esc(item.title)}</strong></a><p>${item.snippet.replace(/<[^>]*>/g,"")}</p></article>`).join("");
+   results.innerHTML="<h3>Results for “"+esc(q)+"”</h3>"+items.map(item=>`<article class="search-result"><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(item.title.replace(/ /g,"_"))}" target="_blank" rel="noopener"><strong>${esc(item.title)}</strong></a><p>${esc(item.snippet.replace(/<[^>]*>/g,""))}</p></article>`).join("");
   }catch(err){results.innerHTML="<p>Search could not connect. Check your internet connection and try again.</p>"}
  });
  input.focus();
