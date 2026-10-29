@@ -1,12 +1,42 @@
 // Extra WebOS 98 system files, maintenance tools, and apps.
 const webos98SampleFiles = {
-  "README.TXT": "Welcome to Windows 98!\n\nThis is a pretend system folder inside WebOS 98.",
-  "LICENSE.TXT": "WEBOS 98 SAMPLE LICENSE\nThis is fictional sample text, not an original Microsoft license.",
-  "WIN.INI": "; Sample Windows 98 configuration\n[windows]\nload=\nrun=\n[desktop]\nWallpaper=(none)\nTileWallpaper=0",
-  "SYSTEM.INI": "; Sample system configuration for WebOS 98\n[boot]\nSystem.drv=system.drv\n[386Enh]\n; Example text only; not used by your device.",
-  "AUTOEXEC.BAT": "@ECHO OFF\nPROMPT $P$G\nECHO Welcome to the WebOS 98 DOS prompt!\nREM Sample only; these commands do not run on your device.",
-  "CONFIG.SYS": "REM Sample startup configuration\nREM This virtual file is for display only.\nDEVICE=HIMEM.SYS",
-  "README-WEBOS.TXT": "WEBOS 98\n\nUse My Computer to browse virtual folders. Open text files with Notepad. Save As lets you choose a virtual folder and filename. Files stay inside this browser-based simulation."
+  "README.TXT": "Microsoft Windows 98\nSystem directory\n\nThis folder contains configuration files, drivers, libraries, and system utilities used by a Windows 98-style installation.\n\nWebOS 98 recreates the look and feel of the classic desktop.",
+  "WIN.INI": "; Windows initialization file\n[windows]\nload=\nrun=\nNullPort=None\n\n[Desktop]\nWallpaper=\nTileWallpaper=0\n\n[Extensions]\n",
+  "SYSTEM.INI": "; System configuration\n[boot]\nsystem.drv=system.drv\nお\n[user]\nprofile=\n\n[386Enh]\ndevice=*vshare\n\n[drivers]\nwave=mmsystem.dll\n",
+  "WINVER.EXE": "Windows Version Information\nFile: WINVER.EXE\nVersion: 4.10.1998\nDescription: Displays Windows version information.",
+  "EXPLORER.EXE": "Windows Explorer\nFile: EXPLORER.EXE\nVersion: 4.10.1998\nDescription: Desktop shell and file manager.",
+  "NOTEPAD.EXE": "Notepad\nFile: NOTEPAD.EXE\nDescription: Plain-text editor.",
+  "REGEDIT.EXE": "Registry Editor\nFile: REGEDIT.EXE\nDescription: Registry configuration utility.",
+  "SCANREGW.EXE": "Registry Checker\nFile: SCANREGW.EXE\nDescription: Registry backup and checking utility.",
+  "SFC.EXE": "System File Checker\nFile: SFC.EXE\nDescription: Checks protected system files.",
+  "TASKMAN.EXE": "Task Manager\nFile: TASKMAN.EXE\nDescription: Shows running tasks.",
+  "RUNDLL32.EXE": "Run DLL utility\nFile: RUNDLL32.EXE\nDescription: Loads a Windows library entry point.",
+  "COMMAND.COM": "Microsoft(R) Windows 98 Command Processor\nVersion 4.10.1998",
+  "AUTOEXEC.BAT": "@ECHO OFF\nPROMPT $P$G\nSET PATH=C:\\WINDOWS;C:\\WINDOWS\\COMMAND\nSET TEMP=C:\\WINDOWS\\TEMP",
+  "CONFIG.SYS": "DEVICE=C:\\WINDOWS\\HIMEM.SYS\nDOS=HIGH,UMB\nFILES=30\nBUFFERS=30",
+  "SYSTEM.DRV": "Windows system driver\nFile: SYSTEM.DRV\nType: virtual system component",
+  "GDI.EXE": "Graphics Device Interface\nFile: GDI.EXE\nDescription: Windows graphics subsystem component.",
+  "USER.EXE": "User Interface Library\nFile: USER.EXE\nDescription: Windows user interface component.",
+  "KERNEL32.DLL": "Windows Kernel Library\nFile: KERNEL32.DLL\nDescription: Core system services.",
+  "GDI32.DLL": "Graphics Device Interface Library\nFile: GDI32.DLL\nDescription: Graphics functions.",
+  "USER32.DLL": "Windows User Interface Library\nFile: USER32.DLL\nDescription: Window and input functions.",
+  "SHELL32.DLL": "Windows Shell Library\nFile: SHELL32.DLL\nDescription: Shell and file operations.",
+  "COMCTL32.DLL": "Common Controls Library\nFile: COMCTL32.DLL\nDescription: Standard interface controls.",
+  "COMDLG32.DLL": "Common Dialogs Library\nFile: COMDLG32.DLL\nDescription: Common file dialog components.",
+  "ADVAPI32.DLL": "Advanced Windows API Library\nFile: ADVAPI32.DLL\nDescription: Security and registry API functions.",
+  "WINMM.DLL": "Windows Multimedia Library\nFile: WINMM.DLL\nDescription: Multimedia services.",
+  "MMSYSTEM.DLL": "Multimedia System Library\nFile: MMSYSTEM.DLL\nDescription: Legacy multimedia functions.",
+  "WSOCK32.DLL": "Windows Sockets Library\nFile: WSOCK32.DLL\nDescription: Network socket functions.",
+  "OLE32.DLL": "Object Linking and Embedding Library\nFile: OLE32.DLL\nDescription: Component object services.",
+  "OLEAUT32.DLL": "OLE Automation Library\nFile: OLEAUT32.DLL\nDescription: Automation support.",
+  "MSVCRT.DLL": "Microsoft C Runtime Library\nFile: MSVCRT.DLL\nDescription: C runtime functions.",
+  "HIMEM.SYS": "Extended Memory Manager\nFile: HIMEM.SYS\nDescription: Extended memory access driver.",
+  "IFSHLP.SYS": "Installable File System Helper\nFile: IFSHLP.SYS\nDescription: File system helper driver.",
+  "VMM32.VXD": "Virtual Machine Manager\nFile: VMM32.VXD\nDescription: Virtual device driver collection.",
+  "VCOMM.VXD": "Virtual Communications Driver\nFile: VCOMM.VXD\nDescription: Communications device support.",
+  "VMM.VXD": "Virtual Machine Manager Driver\nFile: VMM.VXD\nDescription: Virtual device management.",
+  "README-WEBOS.TXT": "WEBOS 98\n\nWelcome to your Windows 98-inspired desktop. Open files in Notepad, explore the system directory, and use the Start menu to launch apps.",
+  "LICENSE.TXT": "WEBOS 98\nSample system-directory content for the WebOS 98 project."
 };
 if (!virtualFS.Win98) virtualFS.Win98 = {};
 for (const [name, content] of Object.entries(webos98SampleFiles)) {
@@ -22,7 +52,7 @@ apps.systeminfo = {
   title: "System Information", icon: "🖥️", w: 390, h: 300,
   render: () => {
     const count = Object.values(virtualFS).reduce((n, folder) => n + Object.keys(folder).length, 0);
-    return '<div class="system-info"><h2>System Properties</h2><p><b>Operating system:</b> WebOS 98 (browser simulation)</p><p><b>Version:</b> 4.10.1998-inspired</p><p><b>Installed apps:</b> ' + installedApps.length + '</p><p><b>Virtual files:</b> ' + count + '</p><p><b>Storage:</b> Browser storage for this site</p><p class="system-warning">This is a simulated computer. It cannot see or clear files on your real device.</p></div>';
+    return '<div class="system-info"><h2>System Properties</h2><p><b>Operating system:</b> WebOS 98 (browser simulation)</p><p><b>Version:</b> 4.10.1998-inspired</p><p><b>Installed apps:</b> ' + installedApps.length + '</p><p><b>Virtual files:</b> ' + count + '</p><p><b>Storage:</b> Browser storage for this site</p></div>';
   }
 };
 appStoreMarkup = function () {
