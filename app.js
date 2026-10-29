@@ -13,7 +13,7 @@ for(const folder of Object.keys(defaultFS))if(!virtualFS[folder]||typeof virtual
 function saveVirtualFS(){localStorage.setItem("webos98-files",JSON.stringify(virtualFS))}
 function saveInstalled(){localStorage.setItem("webos98-installed",JSON.stringify(installedApps))}
 function saveShortcuts(){localStorage.setItem("webos98-shortcuts",JSON.stringify(desktopShortcuts))}
-function appStoreMarkup(){return '<div class="store-page"><h2>WebOS 98 App Store</h2><p>Free apps for your desktop. Installed apps are saved in this browser.</p><div class="store-list">'+[
+function appStoreMarkup(){return '<div class="store-page"><h2>WebOS 98 App Store</h2><p>Free apps for your desktop.</p><div class="store-list">'+[
 ["calculator","🧮","Calculator","A basic four-function calculator."],
 ["calendar","📅","Calendar","A simple calendar for checking dates."],
 ["paint","🎨","Paint","Draw with a mouse or touch."]
