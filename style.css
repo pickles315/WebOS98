@@ -2,3 +2,23 @@
 .context-menu{position:absolute;z-index:10001;width:165px;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;padding:3px;display:flex;flex-direction:column;box-shadow:2px 2px #0005}.context-menu button{text-align:left;border:1px solid transparent;background:transparent;padding:6px}.context-menu button:hover{background:#000080;color:white}
 
 .notepad-menus{gap:0;padding:2px 4px}.notepad-menus button{border:1px solid transparent;background:transparent;padding:4px 9px;color:#111}.notepad-menus button:hover,.notepad-menus button:focus{background:#000080;color:#fff;outline:0}.note-menu-popup{position:absolute;z-index:500;background:#c0c0c0;min-width:150px;padding:3px;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px #0004;display:flex;flex-direction:column}.note-menu-popup button{border:1px solid transparent;background:transparent;text-align:left;padding:6px 16px}.note-menu-popup button:hover{background:#000080;color:white}.inline-search-form{display:flex;gap:6px;margin:16px 0}.inline-search-form input{flex:1;min-width:0;padding:7px;border:2px inset #fff;font:inherit}.search-result{padding:10px 0;border-bottom:1px solid #ddd}.search-result a{color:#000080}.search-result p{margin:6px 0 0;line-height:1.45}.search-result strong{font-size:14px}
+
+/* Win98 virtual file manager and in-app file dialogs */
+.file-toolbar{display:flex;align-items:center;gap:8px;padding:4px 2px 9px;border-bottom:1px solid #888;margin-bottom:8px}
+.file-toolbar span{flex:1;font-weight:bold}
+#virtual-file-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px;align-content:start;min-height:150px}
+.virtual-folder,.virtual-file{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:72px;padding:8px;background:transparent;border:1px solid transparent;text-align:center;overflow-wrap:anywhere}
+.virtual-folder span,.virtual-file span{font-size:28px}
+.virtual-folder:hover,.virtual-file:hover,.dialog-file:hover{background:#000080;color:white;border:1px dotted white}
+.virtual-dialog-overlay{position:absolute;inset:25px 0 0;background:#0005;display:flex;align-items:center;justify-content:center;z-index:1000;padding:12px}
+.virtual-dialog{width:min(370px,100%);background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:3px 3px #0007}
+.virtual-dialog-title{background:linear-gradient(90deg,#000080,#1084d0);color:white;font-weight:bold;padding:6px 8px}
+.virtual-dialog-body{padding:12px;display:flex;flex-direction:column;gap:7px}
+.virtual-dialog-body label{font-weight:bold}
+.dialog-folder,.dialog-filename{width:100%;padding:5px;background:white;border:2px inset #fff;min-height:27px}
+.dialog-file-list{height:105px;overflow:auto;background:white;border:2px inset #fff;padding:4px;display:flex;flex-direction:column;gap:2px}
+.dialog-file{background:white;border:1px solid transparent;text-align:left;padding:5px}
+.dialog-file.selected{background:#000080;color:white}
+.empty-folder{color:#666;padding:8px}
+.dialog-error{min-height:15px;color:#a00000}
+.dialog-buttons{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}
