@@ -1,44 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101018">
-  <title>TinyGames — little games, big distractions</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#008080">
+<title>WebOS 98</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="nav">
-  <a class="logo" href="#"><span class="logo-icon">t</span> tiny<span>games</span></a>
-  <nav><a href="#games">Discover</a><a href="#submit">Submit a game</a></nav>
-  <button class="outline-btn" id="randomBtn">Surprise me ↗</button>
-</header>
-<main>
-  <section class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="dot"></span> THE SMALL GAME CORNER</div>
-      <h1>Big fun.<br><em>Small games.</em></h1>
-      <p>Quick games made by people on the internet. No giant downloads, no 40-hour commitment. Just click and play.</p>
-      <a class="primary-btn" href="#games">Find something to play <span>↓</span></a>
-      <div class="stats"><div><strong id="gameCount">06</strong><small>GAMES TO TRY</small></div><div><strong>0</strong><small>DOWNLOADS NEEDED*</small></div></div>
-      <small class="footnote">*For browser-playable games. Your mileage may vary.</small>
+<div id="desktop" aria-label="WebOS 98 desktop">
+  <div class="desktop-icons">
+    <button class="desktop-icon" data-open="computer"><span class="icon-art">🖥️</span><span>My Computer</span></button>
+    <button class="desktop-icon" data-open="files"><span class="icon-art">📁</span><span>My Documents</span></button>
+    <button class="desktop-icon" data-open="browser"><span class="icon-art">🌐</span><span>Internet Explorer</span></button>
+    <button class="desktop-icon" data-open="notepad"><span class="icon-art">📝</span><span>Notepad</span></button>
+    <button class="desktop-icon" data-open="terminal"><span class="icon-art">▣</span><span>MS-DOS Prompt</span></button>
+    <button class="desktop-icon" data-open="minesweeper"><span class="icon-art">💣</span><span>Minesweeper</span></button>
+  </div>
+  <div id="windows"></div>
+  <div id="start-menu" class="start-menu hidden">
+    <div class="start-banner"><b>WebOS</b><span>98</span></div>
+    <div class="start-items">
+      <button data-open="computer">🖥️ My Computer</button><button data-open="files">📁 My Documents</button>
+      <button data-open="browser">🌐 Internet Explorer</button><button data-open="notepad">📝 Notepad</button>
+      <button data-open="terminal">▣ MS-DOS Prompt</button><button data-open="minesweeper">💣 Minesweeper</button>
+      <button data-open="settings">⚙️ Settings</button>
+      <hr><button id="about-button">ℹ️ About WebOS 98</button>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="art-grid"></div><div class="float-card card-a"><span>◈</span><b>tiny worlds</b><small>BIG IDEAS</small></div>
-      <div class="pixel-face"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="float-card card-b"><span>✳</span><b>one more round</b><small>JUST ONE</small></div>
-      <div class="art-label">PLAY SOMETHING<br>UNEXPECTED_</div>
-    </div>
-  </section>
-  <section class="catalog" id="games">
-    <div class="section-heading"><div><div class="eyebrow">THE COLLECTION / <span id="shownCount">06</span></div><h2>Pick your distraction.</h2></div><input id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
-    <div class="filters" id="filters"><button class="filter active" data-filter="All">Everything</button><button class="filter" data-filter="Arcade">Arcade</button><button class="filter" data-filter="Puzzle">Puzzle</button><button class="filter" data-filter="Chill">Chill</button><button class="filter" data-filter="Weird">Weird</button></div>
-    <div class="game-grid" id="gameGrid"></div>
-    <p id="empty" class="empty" hidden>No games match that. Try a different search.</p>
-  </section>
-  <section class="submit" id="submit"><div><div class="eyebrow">GOT A LITTLE GAME?</div><h2>Put your game<br>on the shelf.</h2><p>Share a browser game with people who are looking for something new.</p></div><button class="primary-btn" id="openSubmit">Submit a game ↗</button></section>
-</main>
-<footer><a class="logo" href="#"><span class="logo-icon">t</span> tiny<span>games</span></a><span>A tiny corner of the internet.</span><span class="status"><i></i> EARLY BUILD</span></footer>
-<dialog id="submitDialog"><form id="submitForm"><button type="button" class="close" id="closeSubmit">×</button><div class="eyebrow">ADD TO THE SHELF</div><h2>Submit a game.</h2><label>Game title<input name="title" required maxlength="60" placeholder="The world's tiniest RPG"></label><label>Game URL<input name="url" type="url" required placeholder="https://..."></label><label>Category<select name="category"><option>Arcade</option><option>Puzzle</option><option>Chill</option><option>Weird</option></select></label><label>Short description<textarea name="description" maxlength="180" required rows="3" placeholder="What do you do in this game?"></textarea></label><p class="notice">This starter saves submissions in your browser only. Connect Supabase to make them shared online.</p><button class="primary-btn" type="submit">Add game</button></form></dialog>
+  </div>
+  <div id="context-menu" class="context-menu hidden">
+    <button data-context="refresh">Refresh</button><button data-open="notepad">New text document</button><button data-open="settings">Properties</button>
+  </div>
+  <footer class="taskbar">
+    <button id="start-button" class="start-button"><span class="start-mark">▦</span> Start</button>
+    <div id="task-buttons"></div><div class="tray"><span>🔊</span><span id="clock">12:00 PM</span></div>
+  </footer>
+</div>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
