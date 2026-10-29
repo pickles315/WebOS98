@@ -13,8 +13,8 @@ const grid=document.querySelector("#gameGrid"),search=document.querySelector("#s
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function render(){
  const q=search.value.trim().toLowerCase();
- const visible=games.filter(g=>(activeFilter==="All"||g.category===activeFilter)&&\`\${g.title} \${g.category} \${g.description}\`.toLowerCase().includes(q));
- grid.innerHTML=visible.map(g=>\`<article class="game-card"><div class="cover" style="--cover:\${safe(g.color||"#6d55c7")}"><span class="cover-tag">\${safe(g.category)}</span><span class="cover-art">\${safe(g.symbol||"✦")}</span></div><div class="game-info"><h3>\${safe(g.title)}</h3><p>\${safe(g.description)}</p><div class="game-bottom"><span class="category">\${safe(g.category)}</span><a class="play-link" href="\${safe(g.url)}" target="_blank" rel="noopener noreferrer">Visit game ↗</a></div></div></article>\`).join("");
+ const visible=games.filter(g=>(activeFilter==="All"||g.category===activeFilter)&&(g.title+" "+g.category+" "+g.description).toLowerCase().includes(q));
+ grid.innerHTML=visible.map(g=>'<article class="game-card"><div class="cover" style="--cover:'+safe(g.color||"#6d55c7")+'"><span class="cover-tag">'+safe(g.category)+'</span><span class="cover-art">'+safe(g.symbol||"✦")+'</span></div><div class="game-info"><h3>'+safe(g.title)+'</h3><p>'+safe(g.description)+'</p><div class="game-bottom"><span class="category">'+safe(g.category)+'</span><a class="play-link" href="'+safe(g.url)+'" target="_blank" rel="noopener noreferrer">Visit game ↗</a></div></div></article>').join("");
  document.querySelector("#shownCount").textContent=String(visible.length).padStart(2,"0");
  document.querySelector("#gameCount").textContent=String(games.length).padStart(2,"0");
  document.querySelector("#empty").hidden=visible.length!==0;
